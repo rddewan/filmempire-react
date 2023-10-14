@@ -1,0 +1,40 @@
+{
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "Community Material Theme Darker High Contrast",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.inlayHints.enabled": "off",
+    "workbench.colorCustomizations": {
+        "editorHint.foreground": "#f000",
+        "editorHint.border": "#00ff66",
+        "editor.lineHighlightBackground": "#1073cf2d",
+        "editor.lineHighlightBorder": "#9fced11f"
+    },
+    "editor.wordWrap": "off",
+    "diffEditor.wordWrap": "off",
+    "editor.guides.indentation": false,
+    "editor.guides.bracketPairs": false,
+    "dart.openDevTools": "flutter",
+    "files.autoSave": "afterDelay",
+    "editor.fontSize": 16,
+    "explorer.compactFolders": false,
+    "dart.debugExternalPackageLibraries": false,
+    "dart.debugSdkLibraries": false,
+    "dart.previewFlutterUiGuides": true,
+    "dart.previewFlutterUiGuidesCustomTracking": true,
+    "editor.maxTokenizationLineLength": 2000000,
+    "yaml.schemaStore.enable": false,
+    "codegpt.apiKey": "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",
+    "codegpt.model": "ChatGPT",
+    "chatgpt.lang": "en",
+    "editor.minimap.enabled": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "eslint.workingDirectories": [
+        "./client",
+        "./server"
+    ],
+    "files.exclude": {
+    "**/.git": false,
+    },
+}
