@@ -4,7 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 
-*  npx create-react-app ./
+* npx create-react-app ./
 * npm start
 * npm install -g eslint
 * eslint --init
+* npm install --legacy-peer-deps
