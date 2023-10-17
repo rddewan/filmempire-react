@@ -1,12 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './components/App';
 
-ReactDOM.render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>, 
-    document.getElementById('root'),
+// react 17
+// ReactDOM.render(
+//   <BrowserRouter>
+//     <App />
+//   </BrowserRouter>,
+//   document.getElementById('root'),
+// );
+
+// React 18
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
 );

@@ -9,3 +9,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * npm install -g eslint
 * eslint --init
 * npm install --legacy-peer-deps
+* npm run build
+* npm test
+* npm run eject

@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
 const MovieInformation = () => {
-    console.log('Movie Information');
+  console.log('Movie Information');
   return (
     <div>
-        MovieInformation
+      MovieInformation
     </div>
   );
 };
