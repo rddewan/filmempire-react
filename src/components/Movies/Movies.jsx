@@ -1,26 +1,55 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
+import { Box, CircularProgress, useMediaQuery, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
+
+import { useGetMoviesQuery } from '../../services/TMDB';
+// eslint-disable-next-line import/no-cycle
+import { MovieList } from '..';
 
 // class component
 // eslint-disable-next-line react/prefer-stateless-function
-class Movies extends Component {
-  render() {
-    return (
-      <>
-        <h1>Movies</h1>
-        <h1>Featured</h1>
-      </>
-    );
-  }
-}
+// class Movies extends Component {
+//   render() {
+//     return (
+//       <>
+//         <h1>Movies</h1>
+//         <h1>Featured</h1>
+//       </>
+//     );
+//   }
+// }
 
 // functional component
-// const Movies = () => {
-//   console.log('Movies');
-//   return (
-//     <div>
-//       Movies
-//     </div>
-//   );
-// };
+const Movies = () => {
+  const { data, error, isFetching } = useGetMoviesQuery();
+
+  if (isFetching) {
+    return (
+      <Box display="flex" justifyContent="center">
+        <CircularProgress size="4rem" />
+      </Box>
+    );
+  }
+
+  if (!data.results.length) {
+    return (
+      <Box display="flex" alignItems="center" mt="20px">
+        <Typography variant="h4">
+          No movies that match the name.
+          <br />
+          Please search for something else.
+        </Typography>
+      </Box>
+    );
+  }
+
+  if (error) return 'Something went wrong, please try again';
+
+  return (
+    <div>
+      <MovieList movies={data} />
+    </div>
+  );
+};
 
 export default Movies;

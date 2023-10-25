@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { Divider, List, ListItem, ListItemText, ListSubheader, ListItemIcon, Box, CircularProgress } from '@mui/material';
+import { Divider, List, ListItem, ListItemText, ListSubheader, ButtonBase, ListItemIcon, Box, CircularProgress } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/styles';
 
@@ -52,7 +52,7 @@ const Sidebar = ({ setMobileOpen }) => {
         {
             categories.map(({ label, value }) => (
               <Link key={value} className={classes.links} to="/">
-                <ListItem onClick={() => {}} ButtonBase>
+                <ListItem onClick={() => {}}>
                   {/* <ListItemIcon>
                     <img
                       src={redLogo}
@@ -72,7 +72,7 @@ const Sidebar = ({ setMobileOpen }) => {
         {
             genres.map(({ label, value }) => (
               <Link key={value} className={classes.links} to="/">
-                <ListItem onClick={() => {}} ButtonBase>
+                <ListItem onClick={() => {}}>
                   {/* <ListItemIcon>
                     <img
                       src={redLogo}
