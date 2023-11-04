@@ -1,19 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AppBar, IconButton, Toolbar, Drawer, Button, Avatar, useMediaQuery } from '@mui/material';
 import { Menu, AccountCircle, Brightness4, Brightness7 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/styles';
+import { useDispatch, userDispatch, useSelector } from 'react-redux';
 
+import { setUser, userSelector } from '../../features/auth';
 // eslint-disable-next-line import/no-cycle
 import { Sidebar, Search } from '..';
+import { fetchToken, moviesApi, createSessionId } from '../../utils';
 import useStyles from './styles';
 
 const NavBar = () => {
+  const { isAuthenticated, user } = useSelector(userSelector);
   const classes = useStyles();
   const isMobile = useMediaQuery('(max-width:600px');
   const theme = useTheme();
-  const isAuthenticated = true;
   const [mobileOpen, setMobileOpen] = useState(false);
+  const dispatch = useDispatch();
+  
+  const token = localStorage.getItem('request_token');
+  const sessionIdFromLocalStorage = localStorage.getItem('session_id');
+
+  useEffect(() => {
+    const logInUser = async () => {
+      if (token) {
+        if (sessionIdFromLocalStorage) {
+          const { data: userData } = await moviesApi.get(`/account?session_id=${sessionIdFromLocalStorage}`);
+          dispatch(setUser(userData));
+        } else {
+          const sessionId = await createSessionId();
+          const { data: userData } = await moviesApi.get(`/account?session_id=${sessionId}`);
+          dispatch(setUser(userData));
+        }
+      }
+    };
+
+    logInUser();
+  }, [token]);
 
   return (
     <>
@@ -40,7 +64,7 @@ const NavBar = () => {
           <div>
             {/* check for authenticated user */}
             {!isAuthenticated ? (
-              <Button color="inherit" onClick={() => {}}>
+              <Button color="inherit" onClick={fetchToken}>
                 {/* show login option */}
                 Login &nbsp; <AccountCircle />
               </Button>
@@ -48,7 +72,7 @@ const NavBar = () => {
               <Button
                 color="inherit"
                 component={Link}
-                to="/profile/:id"
+                to={`/profile/${user.id}`}
                 className={classes.linnkButton}
               >
                 {/* show My Movies on desktop only  */}
